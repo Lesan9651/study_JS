@@ -1,0 +1,12 @@
+.block {
+    background: darkgreen;
+}
+
+#github {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+p {
+    font-size: 16px;
+    color: #fff;
+}
