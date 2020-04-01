@@ -1,50 +1,97 @@
 'use strict';
 
-let money;
-money = prompt('Ваш месячный доход?');
-console.log(money);
-/* ======================================== */
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', ["0: ", "  1: ", "  2: ", "  3: "]);
-console.log(addExpenses);
-/* ======================================== */
-let point = 0;
-let deposit = "";
-deposit = prompt('Есть ли у вас депозит в банке?');
-if (deposit == 'да') {
-    console.log(true);
-    point = point + 1;
-} else {
-    console.log(false);
+// function outputMessage(name, age) {
+//     console.log('Hello, ' + name);
+//     console.log('My age: ' + age);
+// }
+// outputMessage('Max', 30);
+
+// const consoleMessage = function() {
+//     console.log('Hello, friend');
+// }
+// consoleMessage();
+
+// const alertMessage = new Function('alert("Hi!")');
+
+// alertMessage();
+
+// const sum = function(a, b) {
+// console.log(arguments);
+
+//     if (!a) {
+//         a = 0;
+//     }
+//     if (!b) {
+//         b = 0;
+//     }
+//     return a + b;
+// }
+
+// let res = sum(5, 4);
+// console.log('res: ', res);
+
+// const sum = function(a, b) {
+//     return a + b;
+// }
+
+// const sum2 = new Function('a', +'b', 'return a + b');
+// console.log(sum);
+// console.log(sum2);
+
+// (function() {
+//     console.log('Hello');
+// })();
+
+// //Callback
+
+// const doNum = function(a, b, callback) {
+//     if (typeof a === 'number' && typeof b == 'number') {
+//         callback(a, b);
+//     }
+// }
+
+// doNum(5, 10, function(a, b) {
+//     console.log(a + b);
+// })
+
+// function mult(a, b) {
+//     console.log(a * b);
+// }
+
+// doNum(3, 5, mult);
+
+// function one(callback) {
+//     console.log('Делаем запрос на сервер');
+//     setTimeout(function() {
+//         console.log('Получаем данные от сервера');
+//         callback();
+//     }, 1000);
+// }
+
+// function two() {
+//     console.log('Выводим на сираницу');
+// }
+
+// one(two);
+
+// Детерминированными функциями зависит только от входных данных
+// Чистая функция; Детарминированная и без побочных эффектов
+
+//let x = 5;
+
+// function foo(a) {
+//     const sum = a + x;
+//     return sum;
+// }
+
+// console.log(foo(2));
+// x = 3;
+// console.log(foo(2));
+
+function foo(a) {
+    const sum = a + Math.random();
+    return sum;
 }
-/* ======================================== */
-let expenses1;
-let amount1;
-let expenses2;
-let amount2;
-expenses1 = prompt('Введите обязательную статью расходов?');
-amount1 = prompt('Во сколько это обойдется?');
-expenses2 = prompt('Введите обязательную статью расходов?');
-amount2 = prompt('Во сколько это обойдется?');
-console.log(expenses1);
-console.log(amount1);
-console.log(expenses2);
-console.log(amount2);
-/* ======================================== */
-let a = +prompt();
-let b = +prompt();
-let c = +prompt();
-let budgetMonth = a + b + c;
-console.log('бюджет на месяц:', budgetMonth);
-/* ======================================== */
-let n = prompt();
-if (n >= 1200) {
-    console.log('У Вас высокий уровень дохода');
-} else if (n >= 600) {
-    console.log('У Вас средний уровень дохода');
-} else if (n <= 600) {
-    console.log('К сожалению у Вас уровень дохода ниже среднего');
-} else if (n != 0) {
-    console.log('Что то пошло не так');
-} else {
-    console.log('Что то пошло не так');
-}
+console.log(foo(2));
+console.log(foo(2));
+console.log(foo(2));
