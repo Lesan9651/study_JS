@@ -1,97 +1,74 @@
 'use strict';
 
-// function outputMessage(name, age) {
-//     console.log('Hello, ' + name);
-//     console.log('My age: ' + age);
-// }
-// outputMessage('Max', 30);
-
-// const consoleMessage = function() {
-//     console.log('Hello, friend');
-// }
-// consoleMessage();
-
-// const alertMessage = new Function('alert("Hi!")');
-
-// alertMessage();
-
-// const sum = function(a, b) {
-// console.log(arguments);
-
-//     if (!a) {
-//         a = 0;
-//     }
-//     if (!b) {
-//         b = 0;
-//     }
-//     return a + b;
-// }
-
-// let res = sum(5, 4);
-// console.log('res: ', res);
-
-// const sum = function(a, b) {
-//     return a + b;
-// }
-
-// const sum2 = new Function('a', +'b', 'return a + b');
-// console.log(sum);
-// console.log(sum2);
-
-// (function() {
-//     console.log('Hello');
-// })();
-
-// //Callback
-
-// const doNum = function(a, b, callback) {
-//     if (typeof a === 'number' && typeof b == 'number') {
-//         callback(a, b);
-//     }
-// }
-
-// doNum(5, 10, function(a, b) {
-//     console.log(a + b);
-// })
-
-// function mult(a, b) {
-//     console.log(a * b);
-// }
-
-// doNum(3, 5, mult);
-
-// function one(callback) {
-//     console.log('Делаем запрос на сервер');
-//     setTimeout(function() {
-//         console.log('Получаем данные от сервера');
-//         callback();
-//     }, 1000);
-// }
-
-// function two() {
-//     console.log('Выводим на сираницу');
-// }
-
-// one(two);
-
-// Детерминированными функциями зависит только от входных данных
-// Чистая функция; Детарминированная и без побочных эффектов
-
-//let x = 5;
-
-// function foo(a) {
-//     const sum = a + x;
-//     return sum;
-// }
-
-// console.log(foo(2));
-// x = 3;
-// console.log(foo(2));
-
-function foo(a) {
-    const sum = a + Math.random();
-    return sum;
+let isNumder = function(m) {
+    return !isNaN(parseFloat(n)) && Infinity();
 }
-console.log(foo(2));
-console.log(foo(2));
-console.log(foo(2));
+
+let money = prompt('Ваш месячный доход?', 50000),
+    income = 'Фриланс',
+    addExpenses = prompt('Перечислите возможные драсходы через запятую'),
+    deposit = confirm('Усть ли у Вас депозит в банке?'),
+    mission = 50000,
+    period = 3;
+
+let start = function() {
+    money = prompt('Ваш месячный доход?');
+
+    while (isNamber(money)) {
+        money = prompt('Ваш месячный доход?');
+    }
+};
+start();
+
+let showTypeOf = function(item) {
+    console.log(typeof(item));
+};
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
+
+let expenses1 = [];
+
+console.log(addExpenses.toLowerCase().split(','));
+
+let getExpensesMonth = function() {
+    let sum = 0;
+
+    for (let i = 0; i < 2; i++) {
+
+        expenses[1] = prompt('Введите обязательную статью расходов?', 'Садик государственный');
+
+        sum += +prompt('Во сколько это обойдется?');
+    }
+    console.log(expenses);
+    return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+
+console.log('Расходы за месяц: ' + expensesAmount);
+
+let getAccumulatedMonth = function() {
+    return money - expensesAmount();
+};
+
+let accumulatedMonth = getAccumulatedMonth();
+
+let getTargetMonth = function() {
+    return mission / accumulatedMonth
+};
+
+let budgetDay = accumulatedMonth / 30;
+
+console.log('Цуль будет достигнута за ' + Math.cell(getTargetMonth()) + ' месяца');
+
+let getStatusIncome = function() {
+    if (budgetDay < 300) {
+        return ('Низкий уровень дохода');
+    } else if (budgetDay <= 800) {
+        return ('Средний уровень дохода');
+    } else {
+        return ('Высокий уровень дохода');
+    }
+}
+console.log(getStatusIncome());
