@@ -1,74 +1,78 @@
 'use strict';
 
-let isNumder = function(m) {
-    return !isNaN(parseFloat(n)) && Infinity();
+let y = 10;
+
+function one(x, z) {
+    // lexicalEnviroment = {x: 3, z: undefined};
+    //let y = 4;
+    // scope = globalScope = window.y = 10;
+    // lexicalEnviroment = {x: 3, y: 4, z: undefined};
+    ///console.log(z, y, z);
+
+    function two() {
+        // lexicalEnviroment = {};
+        // scope = one.lexicalEnviroment = {x: 3, y: 4, z: undefined};
+        console.log(y);
+    }
+    two();
+}
+one();
+
+let y = 5;
+
+function one(x) {
+    // scope = globalScope = window = {y: 5};
+    console.log(x + y);
 }
 
-let money = prompt('Ваш месячный доход?', 50000),
-    income = 'Фриланс',
-    addExpenses = prompt('Перечислите возможные драсходы через запятую'),
-    deposit = confirm('Усть ли у Вас депозит в банке?'),
-    mission = 50000,
-    period = 3;
+/* ===================================== */
 
-let start = function() {
-    money = prompt('Ваш месячный доход?');
-
-    while (isNamber(money)) {
-        money = prompt('Ваш месячный доход?');
-    }
-};
-start();
-
-let showTypeOf = function(item) {
-    console.log(typeof(item));
-};
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
-
-let expenses1 = [];
-
-console.log(addExpenses.toLowerCase().split(','));
-
-let getExpensesMonth = function() {
-    let sum = 0;
-
-    for (let i = 0; i < 2; i++) {
-
-        expenses[1] = prompt('Введите обязательную статью расходов?', 'Садик государственный');
-
-        sum += +prompt('Во сколько это обойдется?');
-    }
-    console.log(expenses);
-    return sum;
-};
-
-let expensesAmount = getExpensesMonth();
-
-console.log('Расходы за месяц: ' + expensesAmount);
-
-let getAccumulatedMonth = function() {
-    return money - expensesAmount();
-};
-
-let accumulatedMonth = getAccumulatedMonth();
-
-let getTargetMonth = function() {
-    return mission / accumulatedMonth
-};
-
-let budgetDay = accumulatedMonth / 30;
-
-console.log('Цуль будет достигнута за ' + Math.cell(getTargetMonth()) + ' месяца');
-
-let getStatusIncome = function() {
-    if (budgetDay < 300) {
-        return ('Низкий уровень дохода');
-    } else if (budgetDay <= 800) {
-        return ('Средний уровень дохода');
-    } else {
-        return ('Высокий уровень дохода');
-    }
+function two() {
+    let y = 15;
+    one(3);
 }
-console.log(getStatusIncome());
+two();
+
+let a = 50;
+
+function one() {
+    let x = 10;
+
+    function two(y) {
+        function tree() {
+            return x * y * a;
+        }
+        console.dir(tree);
+        return x + y + tree();
+    }
+    return two(15);
+}
+console.log(one());
+
+/* ================================== */
+
+function funcMath() {
+    const a = 10;
+    return function() {
+        console.log(a * a);
+    };
+}
+const mathPow = funcMath();
+funcMath();
+console.dir(mathPow);
+
+const mathPow2 = function() {
+    console.log(a * a);
+}
+console.dir(mathPow2);
+
+/* ======================================== */
+
+function funcMath(a) {
+    return function(b) {
+        console.log(a * b);
+    };
+}
+const mathPow = funcMath(10);
+mathPow();
+console.log(mathPow);
