@@ -1,78 +1,99 @@
 'use strict';
 
-let y = 10;
-
-function one(x, z) {
-    // lexicalEnviroment = {x: 3, z: undefined};
-    //let y = 4;
-    // scope = globalScope = window.y = 10;
-    // lexicalEnviroment = {x: 3, y: 4, z: undefined};
-    ///console.log(z, y, z);
-
-    function two() {
-        // lexicalEnviroment = {};
-        // scope = one.lexicalEnviroment = {x: 3, y: 4, z: undefined};
-        console.log(y);
-    }
-    two();
-}
-one();
-
-let y = 5;
-
-function one(x) {
-    // scope = globalScope = window = {y: 5};
-    console.log(x + y);
-}
-
-/* ===================================== */
-
-function two() {
-    let y = 15;
-    one(3);
-}
-two();
-
-let a = 50;
-
-function one() {
-    let x = 10;
-
-    function two(y) {
-        function tree() {
-            return x * y * a;
+let money,
+    start = function() {
+        do {
+            money = prompt('Ваш месячный доход?', 50000);
         }
-        console.dir(tree);
-        return x + y + tree();
+        while (isNaN(money) || money === '' || money === null)
+    };
+
+start();
+
+let appData = {
+    budget: money,
+    budgetDay: 0,
+    budgetMonth: 0,
+    income: {},
+    addIncome: [],
+    axpenses: {},
+    addExpenses: [],
+    deposit: false,
+    percentDeposit: 0,
+    moneyDeposit: 0,
+    mission: 50000,
+    period: 3,
+    asking: function() {
+
+        if (confirm('Есть ли у Вас дополнительный заработок?')) {
+            let itemIncome = prompt('Какой уВас дополнительный заработок?', 'Таксую');
+            let cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете?', 10000);
+            appData.income[itemIncome] = cashIncome;
+        }
+
+        let addExpenses = prompt('Перечислите возможные расходы через запятую');
+        appData.addExpenses = addExpenses.toLowerCase().split(',');
+        appData.deposit = confirm('Есть ли у Вас депозит в банке?');
+        for (let i = 0; i < 2; i++) {
+
+            let itemExpenses = prompt('Введите обязательную статью расходов?', "Садик государственный");
+            let cashExpenses;
+            do {
+                cashExpenses = prompt('Во сколько это обойдется?', 2500);
+            }
+            while (isNaN(cashExpenses) || cashExpenses === '' || cashExpenses === null);
+
+            appData.expenses[itemExpenses] = cashExpenses;
+        }
+    },
+    getExpensesMonth: function() {
+        for (let key in appData.expenses) {
+            appData.expensesMoth += appData.expenses[key];
+        }
+    },
+    getBudget: function() {
+        appData.budgetMonth = appData.budget - appData.expensesMoth;
+        appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+    },
+    getTargetMonth: function() {
+        return appData.mission / appData.budgetMonth;
+    },
+    getStatusIncome: function() {
+        if (appData.budgetDay > 800) {
+            return ('Высокий уровень дохода');
+        } else if (appData.budgetDay > 300) {
+            return ('Средний уровень дохода');
+        } else if (appData.budgetDay > 0) {
+            return ('Низкий уровень дохода');
+        } else {
+            return ('Что то пошло не так');
+        }
+    },
+    getInfoDeposit: function() {
+        if (appData.deposit) {
+            appData.percentDeposit = prompt('Какой годовой процент', '10');
+            appData.MoneyDeposit = prompt('Какая сумма заложена?', 10000);
+        }
+    },
+    calcSavedMoney: function() {
+        return appData.budgetMonth = appData.period;
     }
-    return two(15);
+};
+
+appData.asking();
+appData.getExpensesMonth();
+appData.getBudget();
+
+console.log('Расходы за месяц: ' + appData.expensesMoth);
+
+if (appData.getTargetMonth() > 0) {
+    console.log('Цуль будет достигнута за ' + Math.ceil(appData.getTargetMonth()) + ' месяца');
+} else {
+    console.log('Цель не будет достигнута');
 }
-console.log(one());
 
-/* ================================== */
+console.log(appData.getStatusIncome());
 
-function funcMath() {
-    const a = 10;
-    return function() {
-        console.log(a * a);
-    };
+for (let key in appData) {
+    console.log('Наша программа включает в себя данные: ' + key + ' - ' + appData[key]);
 }
-const mathPow = funcMath();
-funcMath();
-console.dir(mathPow);
-
-const mathPow2 = function() {
-    console.log(a * a);
-}
-console.dir(mathPow2);
-
-/* ======================================== */
-
-function funcMath(a) {
-    return function(b) {
-        console.log(a * b);
-    };
-}
-const mathPow = funcMath(10);
-mathPow();
-console.log(mathPow);
